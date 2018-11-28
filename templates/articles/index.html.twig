@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .articles{text-align: center;}
+    h3{font-weight: bold;}
+    h1{text-align: center;}
+    .titre{color: blue;}
+    .bordure{border-style: dotted;}
+    .avis{color: green;}
+    
+</style>
+
+<div class="example-wrapper">
+
+    <h1>Forum.com ! ✅</h1>
+
+    <h3 class="titre">ARTICLES</h3>
+
+	<div class="articles">
+    	{% for articles in articles %}
+       		<h3>{{articles.nom}}</h3>
+       		<p>{{articles.contenu}}</p>
+
+
+    	<h3 class="titre">COMMENTAIRES</h3>
+    	<div class="comment">
+	    		{% for commentaires in commentaires %}
+	    			{% if commentaires.fkarticles == articles %}
+	    			{{ form(form) }}
+	    			<div class="bordure">
+			       		<h5 class="pseudo">{{commentaires.pseudo}}</h5>
+			       		<p>{{  commentaires.date |date("d/m/Y")}}</p>
+			       		<p class="avis">{{commentaires.avis}}</p>
+			       	</div>
+		       		{%endif%}
+	       		{% endfor %}
+	    {% endfor %}
+    	</div>
+    </div>   
+</div>
+{% endblock %}
+
+
+
+
+	
+
